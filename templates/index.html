@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎙️ AI Voice Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎙️ AI Voice Assistant</h1>
+            <p>Record your voice or type text • AI analyzes emotion & summarizes</p>
+        </header>
+        <main class="main">
+            <nav class="tabs">
+                <button class="tab-button active" data-tab="record">
+                    🎤 Record Audio
+                </button>
+                <button class="tab-button" data-tab="upload">
+                    📤 Upload Audio
+                </button>
+                <button class="tab-button" data-tab="text">
+                    ✍️ Analyze Text
+                </button>
+                <button class="tab-button" data-tab="about">
+                    ℹ️ About
+                </button>
+            </nav>
+            <div class="tabs-content">
+                <div class="tab-pane active" id="record">
+                    <div class="card">
+                        <h2>🎤 Record Your Voice</h2>
+                        <p>Click the button below and start speaking:</p>
+                        <div class="recorder">
+                            <button id="recordBtn" class="btn btn-primary btn-large">
+                                🔴 Start Recording
+                            </button>
+                            <p id="recordingStatus" class="status-text"></p>
+                            <div id="visualizer" class="visualizer"></div>
+                        </div>
+                        <button id="submitRecordBtn" class="btn btn-success" style="display:none;">
+                            ✓ Process Recording
+                        </button>
+                    </div>
+                </div>
+                <div class="tab-pane" id="upload">
+                    <div class="card">
+                        <h2>📤 Upload Audio File</h2>
+                        <p>Supported formats: MP3, WAV, M4A, WebM</p>
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="audioInput" accept="audio/*" style="display:none;">
+                            <p>📁 Click to upload or drag & drop</p>
+                            <p class="upload-hint">MP3, WAV, M4A, WebM</p>
+                        </div>
+                        <p id="uploadStatus" class="status-text"></p>
+                        <button id="submitUploadBtn" class="btn btn-success" style="display:none;">
+                            ✓ Analyze Audio
+                        </button>
+                    </div>
+                </div>
+                <div class="tab-pane" id="text">
+                    <div class="card">
+                        <h2>✍️ Analyze Text</h2>
+                        <p>Paste your text and analyze emotion & get summary:</p>
+                        <textarea id="textInput" class="textarea" placeholder="Enter or paste your text here..."></textarea>
+                        <button id="submitTextBtn" class="btn btn-success">
+                            ✓ Analyze Text
+                        </button>
+                    </div>
+                </div>
+                <div class="tab-pane" id="about">
+                    <div class="card">
+                        <h2>ℹ️ About This Project</h2>
+                        <div class="about-content">
+                            <h3>🎯 What This Does</h3>
+                            <p>This AI Voice Assistant uses three powerful models:</p>
+                            <div class="feature-list">
+                                <div class="feature">
+                                    <h4>🎙️ Whisper (Speech Recognition)</h4>
+                                    <p>Converts your voice to text with high accuracy</p>
+                                </div>
+                                <div class="feature">
+                                    <h4>💭 DistilRoBERTa (Emotion Detection)</h4>
+                                    <p>Analyzes text to detect emotions: joy, sadness, anger, etc.</p>
+                                </div>
+                                <div class="feature">
+                                    <h4>📝 BART (Summarization)</h4>
+                                    <p>Creates short summaries of longer text</p>
+                                </div>
+                            </div>
+                            <h3>⚡ Key Features</h3>
+                            <ul>
+                                <li>✓ Works offline (no API keys needed)</li>
+                                <li>✓ CPU-only (no GPU required)</li>
+                                <li>✓ Fast inference (&lt;300ms)</li>
+                                <li>✓ Privacy-focused (data not sent anywhere)</li>
+                                <li>✓ Beautiful, responsive UI</li>
+                            </ul>
+                            <h3>📚 Learn More</h3>
+                            <p><strong>Transformers:</strong> Neural networks that understand context by reading everything at once</p>
+                            <p><strong>Transfer Learning:</strong> Using pre-trained models instead of training from scratch</p>
+                            <p><strong>Inference:</strong> Using a trained model to make predictions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="results" class="results" style="display:none;">
+                <div class="card results-card">
+                    <button class="btn-close" id="closeResults">✕</button>
+                    <div id="transcriptionSection" style="display:none;">
+                        <h3>📝 Transcription</h3>
+                        <p id="transcriptionText" class="result-text"></p>
+                    </div>
+                    <div id="emotionSection" style="display:none;">
+                        <h3>💭 Emotion Analysis</h3>
+                        <div id="emotionResult" class="emotion-result"></div>
+                    </div>
+                    <div id="summarySection" style="display:none;">
+                        <h3>📝 Summary</h3>
+                        <p id="summaryText" class="result-text"></p>
+                    </div>
+                    <div id="errorSection" style="display:none;">
+                        <p id="errorText" class="error-text"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="loadingSpinner" class="loading-spinner" style="display:none;">
+                <div class="spinner"></div>
+                <p>Processing with AI... This may take a moment</p>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>Made by <strong>Abdur Rab Dad Khan</strong></p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
