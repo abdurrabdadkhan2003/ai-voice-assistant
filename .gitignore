@@ -1,0 +1,41 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.env*/
+
+# Environment & secrets
+*.env
+.env.local
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+tmp/
+temp/
+*.tmp
+
+# Large data / models / checkpoints
+data/
+datasets/
+models/
+checkpoints/
+*.pt
+*.bin
+
+# Python packaging
+build/
+dist/
+*.egg-info/
